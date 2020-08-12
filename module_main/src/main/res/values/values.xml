@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="in_colors_light">
+        <item>#4B03A9F4</item>
+        <item>#3303A9F4</item>
+        <item>#1903A9F4</item>
+    </array>
+    <attr format="reference" name="adapter"/>
+    <attr format="reference" name="currentView"/>
+    <attr format="boolean" name="isThrottleFirst"/>
+    <attr format="reference" name="itemView"/>
+    <attr format="reference" name="items"/>
+    <attr format="reference" name="onClickCommand"/>
+    <attr format="reference" name="onFocusChangeCommand"/>
+    <attr format="reference" name="onLongClickCommand"/>
+    <attr format="reference" name="onScrollChangeCommand"/>
+    <attr format="reference" name="onScrollStateChangedCommand"/>
+    <attr format="reference" name="onTouchCommand"/>
+    <attr format="boolean" name="requestFocus"/>
+    <attr format="string" name="url"/>
+    <color name="black">#000000</color>
+    <color name="blue">#0000FF</color>
+    <color name="gray">#808080</color>
+    <color name="green">#008000</color>
+    <color name="orange">#FFA500</color>
+    <color name="white">#FFFFFF</color>
+    <color name="yellow">#FFFF00</color>
+    <declare-styleable name="AdapterView"><attr name="itemView"/><attr name="items"/><attr name="adapter"/><attr format="reference" name="dropDownItemView"/><attr format="reference" name="itemIds"/><attr format="reference" name="itemIsEnabled"/><attr name="onScrollStateChangedCommand"/><attr name="onScrollChangeCommand"/><attr format="reference" name="onLoadMoreCommand"/></declare-styleable>
+    <declare-styleable name="ControlDistributeLinearLayout"><attr format="boolean" name="distribute_event"/></declare-styleable>
+    <declare-styleable name="ImageView"><attr name="url"/><attr format="integer" name="request_width"/><attr format="integer" name="request_height"/><attr format="reference|color" name="placeholderRes"/><attr format="reference" name="onSuccessCommand"/><attr format="reference" name="onFailureCommand"/></declare-styleable>
+    <declare-styleable name="ListView"><attr format="reference" name="onItemClickCommand"/></declare-styleable>
+    <declare-styleable name="NestedScrollView"><attr name="onScrollChangeCommand"/></declare-styleable>
+    <declare-styleable name="RadioGroup"><attr format="reference" name="onCheckedChangedCommand"/></declare-styleable>
+    <declare-styleable name="RecyclerView"><attr format="reference" name="lineManager"/><attr format="reference" name="itemBinding"/></declare-styleable>
+    <declare-styleable name="ScrollView"><attr name="onScrollChangeCommand"/></declare-styleable>
+    <declare-styleable name="SimpleDraweeView"><attr name="url"/></declare-styleable>
+    <declare-styleable name="Spinner"><attr format="reference" name="itemDatas"/><attr format="string" name="valueReply"/><attr format="reference" name="onItemSelectedCommand"/></declare-styleable>
+    <declare-styleable name="SwipeRefreshLayout"><attr format="reference" name="onRefreshCommand"/></declare-styleable>
+    <declare-styleable name="Switch"><attr format="reference" name="onCheckedChangeCommand"/><attr format="boolean" name="switchState"/></declare-styleable>
+    <declare-styleable name="TextView"><attr format="reference" name="beforeTextChangedCommand"/><attr format="reference" name="onTextChangedCommand"/><attr format="reference" name="afterTextChangedCommand"/><attr format="reference" name="textChanged"/></declare-styleable>
+    <declare-styleable name="View"><attr name="onClickCommand"/><attr name="onLongClickCommand"/><attr name="onFocusChangeCommand"/><attr name="onTouchCommand"/><attr name="isThrottleFirst"/><attr name="currentView"/></declare-styleable>
+    <declare-styleable name="ViewGroup"><attr name="itemView"/><attr format="reference" name="observableList"/></declare-styleable>
+    <declare-styleable name="ViewPager"><attr name="itemView"/><attr name="items"/><attr name="adapter"/><attr format="reference" name="pageTitles"/><attr format="reference" name="onPageScrolledCommand"/><attr format="reference" name="onPageSelectedCommand"/><attr format="reference" name="onPageScrollStateChangedCommand"/></declare-styleable>
+    <declare-styleable name="WebView"><attr format="string" name="render"/></declare-styleable>
+    <dimen name="customactivityoncrash_activity_horizontal_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_activity_vertical_margin">16dp</dimen>
+    <dimen name="customactivityoncrash_error_activity_error_details_text_size">12sp</dimen>
+    <string name="app_name">mvvmhabit</string>
+    <string name="customactivityoncrash_error_activity_close_app">关闭程序</string>
+    <string name="customactivityoncrash_error_activity_error_details">错误日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_clipboard_label">错误信息</string>
+    <string name="customactivityoncrash_error_activity_error_details_close">关闭</string>
+    <string name="customactivityoncrash_error_activity_error_details_copied">复制日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_copy">复制日志</string>
+    <string name="customactivityoncrash_error_activity_error_details_title">错误详情</string>
+    <string name="customactivityoncrash_error_activity_error_occurred_explanation">发生意外错误。\n抱歉，给您带来不便。</string>
+    <string name="customactivityoncrash_error_activity_restart_app">重新启动</string>
+</resources>

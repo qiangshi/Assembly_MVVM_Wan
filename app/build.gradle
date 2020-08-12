@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+apply plugin: 'WMRouter'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+    defaultConfig {
+        applicationId "com.riskbook.zhq.app"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        multiDexEnabled true
+        flavorDimensions rootProject.ext.android.flavorDimensions
+        testInstrumentationRunner rootProject.ext.android.testInstrumentationRunner
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+                arguments = [AROUTER_MODULE_NAME: project.getName()]   //阿里路由框架配置
+            }
+        }
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../riskbook_irb.jks")
+            storePassword "riskbook2019"
+            keyAlias "irb"
+            keyPassword "riskbook2019"
+        }
+    }
+
+    buildTypes {
+        release {
+//            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+//            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //统一资源前缀，规范资源引用
+    resourcePrefix "app_"
+    dataBinding {
+        enabled true
+    }
+
+    //渠道管理开发/测试/正式
+    productFlavors {
+        app_online {
+            buildConfigField("String", "API_HOST", "\"http://api.anyinfo.com\"")//正式环境配置
+        }
+        app_test {
+            buildConfigField("String", "API_HOST", "\"http://192.168.1.154:8005\"")
+        }
+        app_dev {
+            buildConfigField("String", "API_HOST", "\"http://192.168.6.29:8101\"")
+        }
+        app_prepare {
+            buildConfigField("String", "API_HOST", "\"http://api.bizbook.cn\"")
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isBuildModule.toBoolean()) {
+                //独立运行
+                manifest.srcFile 'src/main/alone/AndroidManifest.xml'
+            } else {
+                //合并到宿主
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {
+                    //正式版本时，排除debug文件夹下所有调试文件
+                    exclude 'src/debug/*'
+                }
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //宿主项目中判断组件是否需要独立运行
+    if (isBuildModule.toBoolean()) {
+        //组件独立运行时，宿主项目直接依赖基础库，避免编译错误
+        implementation project(':library_base')
+    } else {
+        //主业务
+        implementation project(':module_main')
+        //首页
+        implementation project(':module_home')
+//        //知识体系
+//        implementation project(':module_knowledge')
+//        //公众号
+//        implementation project(':module_public_address')
+//        //导航
+//        implementation project(':module_navigation')
+//        //项目
+//        implementation project(':module_project')
+    }
+}
